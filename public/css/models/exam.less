@@ -1,0 +1,138 @@
+.exam-wrap{
+    .page{
+        background-color: #FFF;
+
+        /*头部*/
+        .header{
+            text-align: center;
+            padding: 15px 10px;
+            .h-icon{
+                img{
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                }
+            }
+            .h-title{
+                font-weight: bold;
+                font-size: 16px;
+                padding: 5px 0;
+            }
+            .h-des{
+                padding: 5px 20px;
+            }
+        }
+
+        .card{
+            /*background-color: #FFCCCC;*/
+        }
+
+        /*考题列表*/
+        .exam-list{
+            position: relative;
+            font-size: 14px;
+            padding: 10px;
+            margin: 0;
+            .exam-item{
+                margin-bottom: 10px;
+                .exam-title{
+                    .exam-type{
+                        font-size: 10px;
+                        border-width: 1px;
+                        border-style: solid;
+                        padding: 2px;
+                    }
+                }
+            }
+            ul:before, ul:after, .item-inner:after{
+                height: 0;
+            }
+
+            .score-layer{
+                position: absolute;
+                right: 30px;
+                top: -45px;
+                z-index: 1;
+                opacity: .8;
+                .score-num{
+                    font-size: 36px;
+                    font-weight: bold;
+                    color: red;
+                    float: right;
+                    position: relative;
+                    display: inline-block;
+                    .transform(15deg);
+                    hr{
+                        display: inline-block;
+                        width: 100%;
+                        border: 1px solid;
+                        position: absolute;
+                        left: 0;
+                        bottom: -15px;
+                        .transform(-12deg);
+                        &:not(:first-of-type){
+                            bottom: -25px;
+                            .transform(-22deg);
+                        }
+                    }
+                }
+            }
+        }
+
+        /*底部*/
+        .footer{
+            margin: 0px 25% 20px;
+        }
+
+    }
+
+    .popup-score{
+        padding: 20px 10px;
+        .popup-content{
+            padding: 20px 10px;
+            border: 2px solid #E1B60D;
+            width: 70%;
+            margin: 30px auto;
+            .transform(-10deg);
+            .score-layer{
+                .score-desig{
+                    font-size: 50px;
+                    color: #E1B60D;
+                }
+                .score-num{
+                    font-size: 36px;
+                    font-weight: bold;
+                    color: red;
+                    float: right;
+                    position: relative;
+                    display: inline-block;
+                    .transform(15deg);
+                    hr{
+                        display: inline-block;
+                        width: 100%;
+                        border: 1px solid;
+                        position: absolute;
+                        left: 0;
+                        bottom: -15px;
+                        .transform(-12deg);
+                        &:not(:first-of-type){
+                            bottom: -25px;
+                            .transform(-22deg);
+                        }
+                    }
+                }
+            }
+            .des-layer{
+                padding: 20px 10px 0;
+            }
+        }
+    }
+}
+
+.transform(@deg){
+    transform:rotate(@deg);
+    -ms-transform:rotate(@deg);     /* IE 9 */
+    -moz-transform:rotate(@deg);    /* Firefox */
+    -webkit-transform:rotate(@deg); /* Safari 和 Chrome */
+    -o-transform:rotate(@deg);  /* Opera */
+}

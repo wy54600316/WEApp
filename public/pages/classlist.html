@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>微课程 - 墨麟集团</title>
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="../lib/fontawesome-4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../lib/framework7-1.4.2/dist/css/framework7.ios.min.css">
+<link rel="stylesheet" href="../lib/framework7-1.4.2/dist/css/framework7.ios.colors.min.css">
+<link rel="stylesheet" href="../css/all.min.css">
+</head>
+<body class="theme-lightblue class-wrap">
+  <!-- Views -->
+  <div class="views">
+    <div class="view view-main">
+      <!-- Top Navbar-->
+      <div class="navbar">
+        <div class="navbar-inner theme-lightblue">
+          <div class="center sliding">公开课</div>
+        </div>
+      </div>
+      <div class="pages navbar-through">
+        <div data-page="classlist" class="page">
+          <div class="page-content">
+            <div class="page-classlist">
+              <a href="classdetail.html" class="item-link">
+                <div class="card">
+                  <div class="card-header">墨战具-UI与游戏世界的代入感设计和实践</div>
+                  <div class="card-content">
+                    <div class="card-content-inner">
+                      <div class="color-orange inner-title">主讲人：杨帆<span class="inner-title-des color-lightblue">【原完美世界网站总监】</span></div>
+                      <div class="color-orange inner-title">上线时间：2016-12-12 12:12</div>
+                      <div class="color-orange inner-title">时长：140分钟</div>
+                      Card with header and footer. Card header is used to display card title and footer for some additional information or for custom actions.
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="classdetail.html" class="item-link">
+                <div class="card">
+                  <div class="card-header">墨战具-UI与游戏世界的代入感设计和实践</div>
+                  <div class="card-content">
+                    <div class="card-content-inner">
+                      <div class="color-orange inner-title">主讲人：杨帆<span class="inner-title-des color-lightblue">【原完美世界网站总监】</span></div>
+                      <div class="color-orange inner-title">上线时间：2016-12-12 12:12</div>
+                      <div class="color-orange inner-title">时长：140分钟</div>
+                      Card with header and footer. Card header is used to display card title and footer for some additional information or for custom actions.
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script type="text/template7" id="circleTemp">
+  {{#each list}}
+    <li>
+      <a href="#" class="item-link item-content citem">
+        <div class="item-media"><img src="/favicon.ico"></div>
+        <div class="item-inner">
+          <div class="item-title">{{title}}</div>
+        </div>
+      </a>
+    </li>
+  {{/each}}
+</script>
+<script type="text/javascript" src="../lib/framework7-1.4.2/dist/js/framework7.min.js"></script>
+<script type="text/javascript" src="../scripts/classlist.js"></script>
+</body>
+</html>    

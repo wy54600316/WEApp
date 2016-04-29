@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>微课程 - 墨麟集团</title>
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="../lib/fontawesome-4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../lib/framework7-1.4.2/dist/css/framework7.ios.min.css">
+<link rel="stylesheet" href="../lib/framework7-1.4.2/dist/css/framework7.ios.colors.min.css">
+<link rel="stylesheet" href="../css/all.min.css">
+</head>
+<body class="theme-lightblue class-wrap">
+  <!-- Views -->
+  <div class="views">
+    <div class="view view-main">
+      <!-- Top Navbar-->
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="center sliding">公开课标题</div>
+        </div>
+      </div>
+
+      <div class="pages navbar-through">
+        <div data-page="classdetail" class="page">
+          <div class="page-content page-classdetail">
+          
+            <!-- 内容属性 -->
+            <div class="class-header">
+              <div class="title">墨战具-UI与游戏世界的代入感设计和实践</div>
+              <div class="subtitle color-orange">主讲人：杨帆 <span class="color-lightblue">【腾讯金牌讲师】</span></div>
+              <div class="subtitle color-orange">上线时间：2016-03-12 12:30</div>
+              <div class="subtitle color-orange">课程时长：140 分钟</div>
+              <div class="subtitle color-orange">已学习: <span class="color-green">100</span> 分钟</div>
+            </div>
+
+            <!-- 视频内容 -->
+            <div class="class-content">
+              <div class="card bg-lightblue color-white">
+                <div class="card-content">
+                  <div class="card-content-inner">
+                    内容简介:<br>
+                    辜敏聪老师以《时空旅行》这款游戏的来龙去脉作为开场，对《时空旅行》的产品变化历程、核心玩法、美术风格与关卡主题以及如何开始开发主研游戏等几个方面进行了解谜。
+                  </div>
+                </div>
+              </div>
+              <div class="class-player">
+                <video width="100%" height="300" preload="true" controls="">
+                  <source src="/rs/1.mp4" type="video/mp4">
+                  您使用的系统版本或微信版本过低，无法播放视频......
+                </video>
+              </div>
+              <div class="class-status color-gray">
+                <span>阅读量：<span class="color-lightblue">320</span></span>
+                <i class="fa fa-star fa-2x color-lightblue"></i>
+                <i class="fa fa-heart-o fa-2x"></i>
+              </div>
+            </div>
+
+            <!-- 评论 -->
+            <div class="content-block tablet-inset comment-area">
+              <div class="content-block-inner">
+                <div class="content-block-title">评论</div>
+                <div class="list-block media-list">
+                  <ul>
+                    <li>
+                      <div class="item-inner">
+                        <div class="item-title-row">
+                          <div class="item-title"><img class="item-icon" src="/favicon.ico" /> Facebook</div>
+                          <div class="item-after">12-12 17:14</div>
+                        </div>
+                        <div class="item-text">Lorem ipsum dolor sit amet...</div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="item-inner">
+                        <div class="item-title-row">
+                          <div class="item-title"><img class="item-icon" src="/favicon.ico" /> Facebook</div>
+                          <div class="item-after">12-12 17:14</div>
+                        </div>
+                        <div class="item-text">Lorem ipsum dolor sit amet...</div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="item-inner">
+                        <div class="item-title-row">
+                          <div class="item-title"><img class="item-icon" src="/favicon.ico" /> Facebook</div>
+                          <div class="item-after">12-12 17:14</div>
+                        </div>
+                        <div class="item-text">Lorem ipsum dolor sit amet...</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="reply-area">
+              <div class="reply-inner">
+                <textarea class="reply-inp" placeholder="写点什么吧~"></textarea>
+                <a href="#" class="link reply-btn">回复</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<script type="text/template7" id="circleTemp">
+  {{#each list}}
+    <li>
+      <a href="#" class="item-link item-content citem">
+        <div class="item-media"><img src="/favicon.ico"></div>
+        <div class="item-inner">
+          <div class="item-title">{{title}}</div>
+        </div>
+      </a>
+    </li>
+  {{/each}}
+</script>
+<script type="text/javascript" src="../lib/framework7-1.4.2/dist/js/framework7.min.js"></script>
+<script type="text/javascript" src="../scripts/classlist.js"></script>
+</body>
+</html>    

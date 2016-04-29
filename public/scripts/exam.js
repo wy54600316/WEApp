@@ -1,0 +1,1 @@
+var myApp=new Framework7({modalButtonOk:"确定",modalButtonCancel:"取消",modalPreloaderTitle:"加载中..."}),$$=Framework7.$,mainView=myApp.addView(".view-main",{dynamicNavbar:!0});$$(document).on("pageInit",function(a){a.detail.page}),$$(".button-submit").on("click",function(){myApp.popup(".popup-score")});
