@@ -1,0 +1,15 @@
+{{#list}}
+<a href="#" class="item-link pub-item" data-id={{id}} data-key={{key}}>
+    <div class="card">
+        <div class="card-header">{{subject}}</div>
+        <div class="card-content">
+            <div class="card-content-inner">
+                <div class="color-orange inner-title">主讲人：{{speaker}}<span class="inner-title-des color-lightblue">【{{speakerSummary}}】</span></div>
+                <div class="color-orange inner-title">上线时间：{{../beginTime}}</div>
+                <div class="color-orange inner-title">时长：{{duration}}分钟</div>
+                <div class="inner-content">{{summary}}</div>
+            </div>
+        </div>
+    </div>
+</a>
+{{/list}}

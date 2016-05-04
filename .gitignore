@@ -1,2 +1,10 @@
+### Node ###
+# Logs
+logs
+*.log
+
+# Dependency directory
 node_modules
-dist
+
+# project
+www/

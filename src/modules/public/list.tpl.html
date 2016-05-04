@@ -1,0 +1,18 @@
+<div class="page-content public-wrap">
+    <div class="list-block">
+        <ul>
+            {{#list}}
+            <li>
+                <a href="page/publist.html?t={{name}}&id={{id}}" class="item-link">
+                    <div class="item-content">
+                        <div class="item-media color-lightblue"><i class="fa fa-{{icon}}"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title">{{name}}</div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {{/list}}
+        </ul>
+    </div>
+</div>

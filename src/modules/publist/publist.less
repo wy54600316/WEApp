@@ -1,0 +1,29 @@
+@import "../../style/less/mixins";
+
+.publist-wrap{
+    .item-link{
+        color: inherit;
+        &.active-state{
+            .card{
+              -webkit-transition-duration: 0ms;
+              transition-duration: 0ms;
+              background-color: #d9d9d9;
+            }
+        }
+        .card{
+            .card-header{
+                font-weight: bold;
+            }
+            .inner-title{
+                font-size: 12px;
+            }
+            .inner-content{
+                padding-top: 10px;
+                height: 70px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+}
