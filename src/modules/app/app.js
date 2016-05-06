@@ -2,16 +2,14 @@ require('./app.less');
 
 var appFunc = require('../utils/appFunc'),
     // homeView = require('../home/home'),
-    pubs = require('../public/public'),
-    contacts = require('../contacts/contacts'),
-    setting = require('../setting/setting');
+    pubs = require('../public/public');
 
 module.exports = {
     init: function(){
         this.i18next('');
         pubs.init();
-        contacts.init();
-        setting.init();
+        // contacts.init();
+        // setting.init();
         // this.bindEvent();
     },
 

@@ -2,4 +2,16 @@
 @imgBaseUrl: "../img";
 @fontBaseUrl:"../fonts";
 @mainColor:#ff9630;
-@urlColor: #507daf;
+@urlColor: #5ac8fa;
+
+.transform(@deg){
+    transform:rotate(@deg);
+    -ms-transform:rotate(@deg);     /* IE 9 */
+    -moz-transform:rotate(@deg);    /* Firefox */
+    -webkit-transform:rotate(@deg); /* Safari 和 Chrome */
+    -o-transform:rotate(@deg);  /* Opera */
+}
+.align-items(@val){
+    align-items: @val;
+    -webkit-align-items: @val;
+}

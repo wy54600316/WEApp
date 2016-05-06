@@ -15,7 +15,7 @@
 <div class="panel-overlay"></div>
 
 <div class="views tabs toolbar-through">
-    <div id="homeView" class="view view-main tab active">
+    <div id="homeView" class="view view-main tab">
         <div class="navbar">
             <div class="navbar-inner">
                 <div class="center sliding i18n" data-i18n="app.name">微课程</div>
@@ -36,11 +36,9 @@
                 </div>
             </div>
         </div>
-
     </div>
 
-    <div id="contactView" class="view tab">
-
+    <div id="talkView" class="view tab">
         <div class="navbar">
             <div class="navbar-inner">
                 <div class="center sliding i18n" data-i18n="app.name"></div>
@@ -48,40 +46,59 @@
         </div>
 
         <div class="pages navbar-through">
-            <div data-page="contactView" class="page contact-page">
-                <!-- Search bar -->
-                <form class="searchbar">
-                    <div class="searchbar-input">
-                        <input type="search" class="i18n" data-i18n="[placeholder]global.search">
-                        <a href="#" class="searchbar-clear"></a>
-                    </div>
-                    <a href="#" class="searchbar-cancel i18n" data-i18n="global.cancel"></a>
-                </form>
-
-                <!-- Search bar overlay-->
-                <div class="searchbar-overlay"></div>
-
+            <div data-page="talkView" class="page no-swipeback">
                 <div class="page-content">
-                    <div class="list-block contacts-list searchbar-found">
-                        <div class="list-group">
-                            <ul></ul>
+                    <a href="page/exam.html" class="item-link">
+                        <div class="card item-content color-lightblue">
+                          <div class="card-content">
+                            <div class="card-content-inner">
+                                <i class="fa fa-question-circle-o fa-lg fa-fw"></i> &nbsp;&nbsp; <span class="color-black">一周一答</span>
+                            </div>
+                          </div>
                         </div>
-                    </div>
-                    <div class="content-block searchbar-not-found i18n" data-i18n="index.nothing_found" >
-                    </div>
+                    </a>
+                    <a href="page/examlist.html" class="item-link">
+                        <div class="card item-content color-lightblue">
+                          <div class="card-content">
+                            <div class="card-content-inner">
+                                <i class="fa fa-newspaper-o fa-lg fa-fw"></i> &nbsp;&nbsp; <span class="color-black">一周一问</span>
+                            </div>
+                          </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="settingView" class="view tab">
+    <div id="rankView" class="view tab active">
         <div class="navbar">
             <div class="navbar-inner">
-                <div class="center sliding i18n" data-i18n="app.name"></div>
+                <div class="center sliding i18n" data-i18n="app.name">微课程</div>
             </div>
         </div>
         <div class="pages navbar-through">
-            <div data-page="setting" class="page">
+            <div data-page="rankView" class="page no-swipeback">
+                <div class="page-content">
+                    <a href="page/circle.html" class="item-link">
+                        <div class="card item-content color-lightblue">
+                          <div class="card-content">
+                            <div class="card-content-inner">
+                                <i class="fa fa-mortar-board fa-lg fa-fw"></i> &nbsp;&nbsp; <span class="color-black">学友圈</span>
+                            </div>
+                          </div>
+                        </div>
+                    </a>
+                    <a href="page/examlist.html" class="item-link">
+                        <div class="card item-content color-lightblue">
+                          <div class="card-content">
+                            <div class="card-content-inner">
+                                <i class="fa fa-navicon fa-lg fa-fw"></i> &nbsp;&nbsp; <span class="color-black">排行榜</span>
+                            </div>
+                          </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -89,17 +106,17 @@
     <!-- toolbar start -->
     <div class="toolbar tabbar tabbar-labels">
         <div class="toolbar-inner">
-            <a href="#homeView" class="tab-link active">
+            <a href="#homeView" class="tab-link">
                 <i class="icon ios7-home-outline"></i>
                 <span class="tabbar-label i18n" data-i18n="index.menu_1"></span>
             </a>
 
-            <a href="#contactView" class="tab-link">
+            <a href="#talkView" class="tab-link">
                 <i class="icon ios7-chatbubble-outline"></i>
                 <span class="tabbar-label i18n" data-i18n="index.menu_2"></span>
             </a>
 
-            <a href="#settingView" class="tab-link">
+            <a href="#rankView" class="tab-link active">
                 <i class="icon ios7-gear-outline">
                     <!-- <span class="badge badge-red">4</span> -->
                 </i>

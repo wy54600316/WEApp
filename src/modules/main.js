@@ -113,12 +113,14 @@ var app = {
             domCache: true
         });
 
-        hiApp.addView('#contactView', {
-            dynamicNavbar: true
+        window.talkF7View = hiApp.addView('#talkView', {
+            dynamicNavbar: true,
+            domCache: true
         });
 
-        hiApp.addView('#settingView', {
-            dynamicNavbar: true
+        window.rankF7View = hiApp.addView('#rankView', {
+            dynamicNavbar: true,
+            domCache: true
         });
 
         // init app

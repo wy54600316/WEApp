@@ -1,39 +1,40 @@
 @import "mixins";
 
 .navbar{
-  i{
-    &.icon {
-      font-size: 25px;
+    i{
+        &.icon {
+            font-size: 25px;
+        }
+
+        &.ios7-compose-outline {
+            font-size: 30px;
+        }
+
+        &.ios7-arrow-thin-left {
+            font-size: 32px;
+        }   
     }
 
-    &.ios7-compose-outline {
-      font-size: 30px;
+    a{
+        &.link {
+            color: #333;
+            &.right-link{
+                color: @urlColor;
+            }
+        }
     }
 
-    &.ios7-arrow-thin-left {
-      font-size: 32px;
+    a, div{
+        &.link:active{
+            opacity: 1;
+            color: @mainColor
+        }
     }
 
-  }
-
-  a{
-    &.link {
-      color: #333;
-      &.color-orange{
+    .text-navbar {
+        font-size: 15px;
+    }
+    .center{
         color: @mainColor;
-      }
     }
-  }
-
-  a,
-  div{
-    &.link:active{
-      opacity: 1;
-      color: @mainColor
-    }
-  }
-
-  .text-navbar {
-    font-size: 15px;
-  }
 }

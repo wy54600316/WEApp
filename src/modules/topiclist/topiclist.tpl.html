@@ -1,0 +1,23 @@
+{{#if list}}
+    {{#list}}
+    <li>
+        <a href="#" class="item-link item-content titem" data-id="{{id}}" data-ind="{{@index}}">
+            <div class="item-inner">
+                <div class="item-title-row">
+                    <div class="item-title">帖子标题</div>
+                </div>
+                <div class="item-subtitle">2016-10-10 10:30&nbsp;&nbsp;by琼琼 <i class="icon demo-icon-1"></i></div>
+                <div class="item-text">这篇文章是集团研发副总沈刚对游戏设计框架中,成就型玩家能力释放设计与心流理论结合的心得体会,全文如下:前几天......</div>
+            </div>
+        </a>
+    </li>
+    {{/list}}
+{{else}}
+    <li>
+        <div class="item-inner">
+            <div class="item-title-row txt-center">
+                <div class="block">暂无内容!</div>
+            </div>
+        </div>
+    </li>
+{{/if}}

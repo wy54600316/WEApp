@@ -2,10 +2,13 @@ var index = require('./app/app'),
     appFunc = require('./utils/appFunc'),
     publist = require('./publist/publist'),
     pubdetailModule = require('./pubdetail/pubdetail'),
-    feedbackModule = require('./feedback/feedback'),
-    aboutModule = require('./about/about'),
-    languageModule = require('./language/language'),
-    messageModule = require('./message/message');
+    examModule = require('./exam/exam'),
+    examlistModule = require('./examlist/examlist'),
+    examresultModule = require('./examresult/examresult'),
+    circleModule = require('./circle/circle'),
+    topiclistModule = require('./topiclist/topiclist'),
+    topicdetailModule = require('./topicdetail/topicdetail'),
+    topicaddModule = require('./topicadd/topicadd');
 
 module.exports = {
     init: function() {
@@ -24,7 +27,7 @@ module.exports = {
         var name = page.name;
         var from = page.from;
 
-        if(name === 'homeView' || name === 'contactView' || name === 'setting' ){
+        if(name === 'homeView' || name === 'talkView' || name === 'rankView' ){
             if(from === 'left'){
                 appFunc.showToolbar();
             }
@@ -38,20 +41,29 @@ module.exports = {
             case 'publist':
                 publist.init(query);
                 break;
-            case 'about':
-                aboutModule.init();
-                break;
-            case 'feedback':
-                feedbackModule.init();
-                break;
             case 'pubdetail':
                 pubdetailModule.init(query);
                 break;
-            case 'message':
-                messageModule.init(query);
+            case 'exam':
+                examModule.init(query);
                 break;
-            case 'language':
-                languageModule.init();
+            case 'examlist':
+                examlistModule.init(query);
+                break;
+            case 'examresult':
+                examresultModule.init(query);
+                break;
+            case 'circle':
+                circleModule.init(query);
+                break;
+            case 'topiclist':
+                topiclistModule.init(query);
+                break;
+            case 'topicdetail':
+                topicdetailModule.init(query);
+                break;
+            case 'topicadd':
+                topicaddModule.init(query);
                 break;
         }
     }
