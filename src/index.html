@@ -15,10 +15,10 @@
 <div class="panel-overlay"></div>
 
 <div class="views tabs toolbar-through">
-    <div id="homeView" class="view view-main tab">
+    <div id="homeView" class="view tab active view-main">
         <div class="navbar">
             <div class="navbar-inner">
-                <div class="center sliding i18n" data-i18n="app.name">微课程</div>
+                <div class="center sliding">微课程</div>
             </div>
         </div>
 
@@ -30,8 +30,8 @@
                         <div class="pull-to-refresh-arrow"></div>
                     </div>
                     <div class="load-result"></div>
-                    <div class="home-timeline">
-
+                    <div class="list-block">
+                        <ul id="pubTypeList"></ul>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
     <div id="talkView" class="view tab">
         <div class="navbar">
             <div class="navbar-inner">
-                <div class="center sliding i18n" data-i18n="app.name"></div>
+                <div class="center sliding"></div>
             </div>
         </div>
 
@@ -71,10 +71,10 @@
         </div>
     </div>
 
-    <div id="rankView" class="view tab active">
+    <div id="rankView" class="view tab">
         <div class="navbar">
             <div class="navbar-inner">
-                <div class="center sliding i18n" data-i18n="app.name">微课程</div>
+                <div class="center sliding">微课程</div>
             </div>
         </div>
         <div class="pages navbar-through">
@@ -89,7 +89,7 @@
                           </div>
                         </div>
                     </a>
-                    <a href="page/examlist.html" class="item-link">
+                    <a href="page/ranklist.html" class="item-link">
                         <div class="card item-content color-lightblue">
                           <div class="card-content">
                             <div class="card-content-inner">
@@ -106,21 +106,19 @@
     <!-- toolbar start -->
     <div class="toolbar tabbar tabbar-labels">
         <div class="toolbar-inner">
-            <a href="#homeView" class="tab-link">
-                <i class="icon ios7-home-outline"></i>
-                <span class="tabbar-label i18n" data-i18n="index.menu_1"></span>
+            <a href="#homeView" class="tab-link active">
+                <i class="fa fa-home fa-lg"></i>
+                <span class="tabbar-label">微课堂</span>
             </a>
 
             <a href="#talkView" class="tab-link">
-                <i class="icon ios7-chatbubble-outline"></i>
-                <span class="tabbar-label i18n" data-i18n="index.menu_2"></span>
+                <i class="fa fa-comments-o fa-lg"></i>
+                <span class="tabbar-label">有话说</span>
             </a>
 
-            <a href="#rankView" class="tab-link active">
-                <i class="icon ios7-gear-outline">
-                    <!-- <span class="badge badge-red">4</span> -->
-                </i>
-                <span class="tabbar-label i18n" data-i18n="index.menu_3"></span>
+            <a href="#rankView" class="tab-link">
+                <i class="fa fa-list fa-lg"></i>
+                <span class="tabbar-label">打榜单</span>
             </a>
         </div>
     </div>

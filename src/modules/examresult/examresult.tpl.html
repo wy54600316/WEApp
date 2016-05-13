@@ -1,44 +1,58 @@
-<li class="exam-item">
-    <div class="exam-title">
-        <span class="exam-type color-lightblue border-lightblue">单选题</span> 1、人在每天的工作时间中，总会有一段时间的工作效率最高，这就是巅峰期，研究表明，大多数人的巅峰期状态时间期间是：
+<div class="card bg-lightblue color-white">
+    <div class="card-content">
+        <div class="card-content-inner">
+            {{obj.description}}
+        </div>
     </div>
-    <div class="answer-list">
-        <label class="label-checkbox item-content">
-            <input type="checkbox" name="my-checkbox" value="Books" checked="checked" disabled="disabled">
-            <div class="item-media">
-                <!-- <i class="icon icon-form-checkbox"></i> -->
-                <i class="fa fa-times-circle-o fa-lg color-red"></i>
-            </div>
-            <div class="item-inner">
-                <div class="item-title">Books</div>
-            </div>
-        </label>
-        <label class="label-checkbox item-content">
-            <input type="checkbox" name="my-checkbox" value="Books" disabled="disabled">
-            <div class="item-media">
-                <i class="fa fa-check-circle-o fa-lg color-lightblue"></i>
-            </div>
-            <div class="item-inner">
-                <div class="item-title">Books</div>
-            </div>
-        </label>
-        <label class="label-checkbox item-content">
-            <input type="checkbox" name="my-checkbox" value="Books" disabled="disabled">
-            <div class="item-media">
-                <i class="fa fa-circle-o fa-lg color-gray"></i>
-            </div>
-            <div class="item-inner">
-                <div class="item-title">Books</div>
-            </div>
-        </label>
-        <label class="label-checkbox item-content">
-            <input type="checkbox" name="my-checkbox" value="Books" disabled="disabled">
-            <div class="item-media">
-                <i class="fa fa-circle-o fa-lg color-gray"></i>
-            </div>
-            <div class="item-inner">
-                <div class="item-title">Books</div>
-            </div>
-        </label>
+</div>
+<div class="list-block exam-list">
+    {{#if score}}
+    <div class="score-layer">
+        <span class="score-num">{{score}}<hr><hr></span>
     </div>
-</li>
+    {{/if}}
+    <ul id="questionList">
+        {{#each obj.questions}}
+        <li class="exam-item theme-lightblue">
+            <div class="exam-title">
+                <span class="exam-type color-lightblue border-lightblue">
+                    {{typeStr type}}
+                </span>&nbsp;
+                {{indexPlus @index}}、{{subject}}：
+            </div>
+            <div class="answer-list">
+                {{#each answers}}
+                <label class="label-checkbox item-content">
+                    
+                    <input type="{{#typeCompare ../type}}checkbox{{else}}radio{{/typeCompare}}" 
+                            name="ck-{{../_index}}" 
+                            value="{{id}}" 
+                            disabled="disabled" 
+                            {{#if isRight}}checked="checked"{{/if}}
+                    />
+                    
+                    <div class="item-media">
+                        {{#if isChoose}}
+                            {{#if isRight}}
+                            <i class="fa fa-check-circle-o fa-lg color-lightblue"></i>
+                            {{else}}
+                            <i class="fa fa-times-circle-o fa-lg color-red"></i>
+                            {{/if}}
+                        {{else}}
+                            {{#if isRight}}
+                            <i class="fa fa-check-circle-o fa-lg color-lightblue"></i>
+                            {{else}}
+                            <i class="fa fa-circle-o fa-lg color-gray"></i>
+                            {{/if}}
+                        {{/if}}
+                    </div>
+                    <div class="item-inner">
+                        <div class="item-title"><strong>{{sortString}}.</strong> {{answer}}</div>
+                    </div>
+                </label>
+                {{/each}}
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</div>

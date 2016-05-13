@@ -1,0 +1,35 @@
+
+/* 全局公用样式 */
+body{
+    font-family: Helvetica,"STHeiti STXihei","Microsoft JhengHei","Microsoft YaHei",Tohoma,Arial;
+}
+.views {
+  overflow-y: hidden;
+}
+.block{
+    display: block!important;
+    width: 100%;
+}
+.txt-center{
+    text-align: center!important;
+}
+.txt-right{
+    text-align: right!important;
+}
+a{
+    &.item-link.active-state{
+        .item-content{
+            -webkit-transition-duration: 0ms;
+            transition-duration: 0ms;
+            background-color: #d9d9d9;
+        }
+    }
+}
+.page{
+    .list-block{
+        margin: 25px 0;
+        .item-title{
+            font-size: 14px;
+        }
+    }
+}

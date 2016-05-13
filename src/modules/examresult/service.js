@@ -1,16 +1,17 @@
 var xhr = require('../utils/xhr');
 
 module.exports = {
-    getExamList: function(opt,callback){
+    getQuestions: function(opt,callback){
         xhr.simpleCall({
-            // func:'publist'
-            func: 'Course/Articles',
-            method: 'GET',
+            func: 'MicroClass/McTestTopicDetail',
+            // method: 'POST',
+            contentType: 'application/json',
             data: {
-                // 'categoryId': opt.categoryId
+                id: opt.id,
+                key: opt.key
             }
         },function(res){
             callback(res);
         });
-    }
+    },
 };

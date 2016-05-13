@@ -7,7 +7,12 @@
                 <div class="color-orange inner-title">主讲人：{{speaker}}<span class="inner-title-des color-lightblue">【{{speakerSummary}}】</span></div>
                 <div class="color-orange inner-title">上线时间：{{../beginTime}}</div>
                 <div class="color-orange inner-title">时长：{{duration}}分钟</div>
-                <div class="inner-content">{{summary}}</div>
+                <div class="inner-content">
+                    {{summary}}
+                    {{if summaryPic}}
+                    <div class="summary-pic"><img src="{{summaryPic}}"></div>
+                    {{/if}}
+                </div>
             </div>
         </div>
     </div>

@@ -3,12 +3,9 @@ var xhr = require('../utils/xhr');
 module.exports = {
     getExamList: function(opt,callback){
         xhr.simpleCall({
-            // func:'publist'
-            func: 'Course/Articles',
+            func: 'MicroClass/McTestTopics',
             method: 'GET',
-            data: {
-                // 'categoryId': opt.categoryId
-            }
+            data: opt.dataObj
         },function(res){
             callback(res);
         });

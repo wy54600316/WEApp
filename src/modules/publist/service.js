@@ -7,26 +7,12 @@ module.exports = {
             func: 'Course/Articles',
             method: 'GET',
             data: {
-                'categoryId': opt.categoryId
+                'categoryId': opt.categoryId,
+                'page': opt.page,
+                'pageSize': opt.pageSize
             }
         },function(res){
             callback(res);
         });
-    },
-    refreshData: function(opt,callback){
-        // xhr.simpleCall({
-        //     func:'refresh_timeline'
-        // },function(res){
-        //     callback(res.data);
-        // });
-        this.getPubList(opt,callback);
-    },
-    infiniteData: function(callback){
-        // xhr.simpleCall({
-        //     func:'more_timeline'
-        // },function(res){
-        //     callback(res.data);
-        // });
-        this.getPubList(opt,callback);
     }
 };

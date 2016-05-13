@@ -6,7 +6,7 @@ var camera = {
     getPicture: function(){
 
         if(!appFunc.isPhonegap()){
-            hiApp.alert(i18n.error.phonegap_only);
+            weApp.alert("该模块只支持在PhoneGap中使用");
             return false;
         }
 
@@ -49,7 +49,7 @@ var camera = {
     cameraError: function(message){
         setTimeout(function(){
             if(message !== 'no image selected'){
-                hiApp.alert(message);
+                weApp.alert(message);
             }
         },500);
     },

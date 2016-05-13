@@ -7,11 +7,11 @@ var fileTransfer = {
 
         //Upload progress
         var text = '<div id="progress" class="progress"><span class="progress-bar"></span></div>';
-        hiApp.modal({
-            title: i18n.camera.image_uploading + ' <span class="percent"></span>',
+        weApp.modal({
+            title: '正在上传图片... <span class="percent"></span>',
             text: text,
             buttons: [{
-                text: i18n.global.cancel,
+                text: "取消",
                 onClick: fileTransfer.abortUpload
             }]
         });
@@ -29,39 +29,39 @@ var fileTransfer = {
     },
 
     uploadSuccess: function (r) {
-        hiApp.closeModal('.modal');
+        weApp.closeModal('.modal');
 
         navigator.camera.cleanup();
 
         var response = r.response ? JSON.parse(r.response) : '';
 
-        hiApp.alert(response);
+        weApp.alert(response);
     },
 
     uploadFail: function (error) {
-        hiApp.closeModal('.modal');
+        weApp.closeModal('.modal');
 
         /* global FileTransferError */
         var errText;
         switch (error.code){
             case FileTransferError.FILE_NOT_FOUND_ERR:
-                errText = i18n.camera.file_not_found_err;
+                errText = "未找到需要上传的文件";
                 break;
             case FileTransferError.INVALID_URL_ERR:
-                errText = i18n.camera.invalid_url_err;
+                errText = "无效的上传服务器指向";
                 break;
             case FileTransferError.CONNECTION_ERR:
-                errText = i18n.camera.connection_err;
+                errText = "与网络断开或请求超时";
                 break;
             case FileTransferError.ABORT_ERR:
-                errText = i18n.camera.abort_err;
+                errText = "已经取消图片的上传";
                 break;
             case FileTransferError.NOT_MODIFIED_ERR:
-                errText = i18n.camera.not_modified_err;
+                errText = "没有修改";
                 break;
         }
 
-        hiApp.alert(errText);
+        weApp.alert(errText);
     },
 
     onprogress: function(progressEvent){

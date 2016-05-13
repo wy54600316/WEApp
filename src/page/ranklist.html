@@ -1,24 +1,24 @@
 <div class="navbar">
-  <div class="navbar-inner">
-    <div class="left">
+    <div class="navbar-inner">
+        <div class="left">
             <a href="#" class="back link text-navbar">
                 <i class="fa fa-chevron-left"></i>
             </a>
         </div>
-    <div class="center sliding">一周一问</div>
-  </div>
+        <div class="center ranklist-title sliding">排行榜</div>
+    </div>
 </div>
+
 <div class="pages navbar-through">
-    <div data-page="examlist" class="page no-toolbar exam-wrap">
-        <div class="page-content pull-to-refresh-content infinite-scroll">
+    <div data-page="ranklist" class="page no-toolbar ranklist-wrap">
+        <div data-distance="50" class="page-content pull-to-refresh-content infinite-scroll">
             <div class="pull-to-refresh-layer">
                 <div class="preloader"></div>
                 <div class="pull-to-refresh-arrow"></div>
             </div>
-            <div class="list-block media-list">
-                <ul id="examList">
-                </ul>
+            <div class="load-result"></div>
+            <div class="page-classlist">
             </div>
-        </div>
+          </div>
     </div>
 </div>

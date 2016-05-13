@@ -32,13 +32,41 @@
         padding: 10px;
         margin: 0;
         .exam-item{
-            margin-bottom: 10px;
+            margin-bottom: 30px;
             .exam-title{
+                min-height: 35px;
                 .exam-type{
                     font-size: 10px;
                     border-width: 1px;
                     border-style: solid;
                     padding: 2px;
+                }
+            }
+            .answer-list{
+                .item-content{
+                    min-height: inherit;
+                    margin-bottom: 5px;
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    -ms-flex-align: baseline;
+                    -webkit-align-items: baseline;
+                    align-items: baseline;
+                    .item-media{
+                        padding-top: 0;
+                        padding-bottom: 0;
+                    }
+                    .item-inner{
+                        padding-top: 0;
+                        padding-bottom: 0; 
+                        min-height: inherit;
+
+                        -ms-flex-align: baseline;
+                        -webkit-align-items: baseline;
+                        align-items: baseline;
+                        .item-title{
+                            white-space: pre-line;
+                        }
+                    }
                 }
             }
         }
@@ -53,6 +81,7 @@
             z-index: 1;
             opacity: .8;
             .score-num{
+                min-width: 50px;
                 font-size: 36px;
                 font-weight: bold;
                 color: red;
@@ -97,6 +126,7 @@
                 color: #E1B60D;
             }
             .score-num{
+                min-width: 50px;
                 font-size: 36px;
                 font-weight: bold;
                 color: red;

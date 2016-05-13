@@ -2,7 +2,7 @@
     <div class="navbar-inner">
         <div class="left">
             <a href="#" class="back link text-navbar">
-                <i class="icon ios7-arrow-thin-left"></i>
+                <i class="fa fa-chevron-left"></i>
             </a>
         </div>
         <div class="center topiclist-title sliding">{{title}}</div>
@@ -11,11 +11,17 @@
         </div>
     </div>
 </div>
-<div data-page="topiclist" class="page">
-    <div class="page-content">
-        <div class="list-block media-list">
-            <ul id="topicList">
-            </ul>
+<div class="pages navbar-through">
+    <div data-page="topiclist" class="page no-toolbar topiclist-wrap">
+        <div class="page-content pull-to-refresh-content infinite-scroll">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+            <div class="list-block media-list">
+                <ul id="topicList">
+                </ul>
+            </div>
         </div>
     </div>
 </div>

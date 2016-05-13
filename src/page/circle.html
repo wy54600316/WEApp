@@ -2,20 +2,23 @@
   <div class="navbar-inner">
     <div class="left">
             <a href="#" class="back link text-navbar">
-                <i class="icon ios7-arrow-thin-left"></i>
+                <i class="fa fa-chevron-left"></i>
             </a>
         </div>
     <div class="center sliding">学友圈</div>
   </div>
 </div>
 <div class="pages navbar-through">
-    <div data-page="circle" class="page circle-wrap theme-lightblue">
-        <div class="page-content ">
+    <div data-page="circle" class="page no-toolbar circle-wrap theme-lightblue">
+        <div class="page-content pull-to-refresh-content infinite-scroll">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
             <div class="buttons-row">
-                <a href="#recommTab" class="tab-link button">推荐圈子</a>
+                <a href="#recommTab" class="tab-link button active">推荐圈子</a>
                 <a href="#mineTab" class="tab-link button">我的圈子</a>
             </div>
-            <!-- Tabs动画容器, 在动画过渡时需要 -->
             <div class="tabs-animated-wrap">
                 <div class="tabs">
                     <div id="recommTab" class="tab">

@@ -1,5 +1,4 @@
-var index = require('./app/app'),
-    appFunc = require('./utils/appFunc'),
+var appFunc = require('./utils/appFunc'),
     publist = require('./publist/publist'),
     pubdetailModule = require('./pubdetail/pubdetail'),
     examModule = require('./exam/exam'),
@@ -8,7 +7,8 @@ var index = require('./app/app'),
     circleModule = require('./circle/circle'),
     topiclistModule = require('./topiclist/topiclist'),
     topicdetailModule = require('./topicdetail/topicdetail'),
-    topicaddModule = require('./topicadd/topicadd');
+    topicaddModule = require('./topicadd/topicadd'),
+    ranklistModule = require('./ranklist/ranklist');
 
 module.exports = {
     init: function() {
@@ -64,6 +64,9 @@ module.exports = {
                 break;
             case 'topicadd':
                 topicaddModule.init(query);
+                break;
+            case 'ranklist':
+                ranklistModule.init(query);
                 break;
         }
     }

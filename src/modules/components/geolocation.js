@@ -6,7 +6,7 @@ var geolocation = {
         $$('#geoInfo').removeClass('show').hide();
 
         $$('#geoInfo .location>i').removeClass('ios7-location-outline').addClass('preloader');
-        $$('#geoInfo .location>span').html(i18n.geo.loading_geo);
+        $$('#geoInfo .location>span').html("正在获取您所在的位置...");
 
         GlobalLat = null;
         GlobalLong = null;
@@ -17,7 +17,7 @@ var geolocation = {
         if (navigator.geolocation){
             navigator.geolocation.getCurrentPosition(geolocation.showPosition,geolocation.showGeoError);
         }else{
-            $$('#geoInfo .location').html(i18n.geo.position_unavailable);
+            $$('#geoInfo .location').html("无法获取到您所在的地理位置信息");
         }
     },
 
@@ -36,16 +36,16 @@ var geolocation = {
         switch(error.code)
         {
             case error.PERMISSION_DENIED:
-                $$('#geoInfo .location').html(i18n.geo.permission_denied);
+                $$('#geoInfo .location').html("您拒绝了系统定位的权限申请");
                 break;
             case error.POSITION_UNAVAILABLE:
-                $$('#geoInfo .location').html(i18n.geo.position_unavailable);
+                $$('#geoInfo .location').html("无法获取到您所在的地理位置信息");
                 break;
             case error.TIMEOUT:
-                $$('#geoInfo .location').html(i18n.geo.timeout);
+                $$('#geoInfo .location').html("获取地理位置信息超时");
                 break;
             case error.UNKNOWN_ERROR:
-                $$('#geoInfo .location').html(i18n.error.unknown_error);
+                $$('#geoInfo .location').html("未知错误");
                 break;
         }
     },
@@ -58,7 +58,7 @@ var geolocation = {
     },
 
     cleanGeo: function(){
-        hiApp.confirm(i18n.geo.confirm_clean_geo,geolocation.initGeo);
+        weApp.confirm("您将清除定位的地理信息",geolocation.initGeo);
     }
 };
 

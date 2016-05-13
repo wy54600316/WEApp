@@ -2,10 +2,18 @@
     <!-- 成绩Modal -->
     <div class="popup-content">
         <div class="score-layer txt-center">
-            <span class="score-desig">神童</span>
-            <span class="score-num">100<hr><hr></span>
+            <span class="score-desig">{{designName obj.score}}</span>
+            <span class="score-num">{{obj.score}}<hr><hr></span>
         </div>
-        <div class="des-layer">恭喜你打败了100%的童鞋，<br>击败了同班同学：黎劲、袁梅、方大鑫......</div>
+        <div class="des-layer">
+        	恭喜你打败了{{obj.beyondPerString}}的童鞋
+        	{{#if obj.beyondUsers}}
+        	，<br>击败了同班同学：
+        		{{#each beyondUsers}}
+        		黎劲、袁梅、方大鑫......
+        		{{/each}}
+        	{{/if}}
+        </div>
     </div>
-    <p class="txt-center"><a href="#" class="close-popup color-lightblue">查看答案</a></p>
+    <p class="txt-center"><a href="#" class="close-popup color-lightblue" id="examPopupBtn">知道了</a></p>
 </div>

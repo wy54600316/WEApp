@@ -1,12 +1,13 @@
 {{#list}}
 <li>
-    <a href="page/examresult.html" class="item-link item-content">
+    <a href="page/examresult.html?id={{id}}&k={{key}}" class="item-link item-content">
         <div class="item-media"><img src="/res/icons/favicon.ico" width="80"></div>
         <div class="item-inner">
             <div class="item-title-row">
-                <div class="item-title">Yellow Submarine</div>
+                <div class="item-title">{{subject}}</div>
             </div>
-            <div class="item-text">Lorem ipsum dolor sit amet...</div>
+            <div class="item-text">{{description}}</div>
+            <div class="item-endtime">结束时间：{{../endTime}}</div>
         </div>
     </a>
 </li>

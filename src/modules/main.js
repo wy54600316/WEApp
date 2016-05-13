@@ -2,9 +2,8 @@ require('framework7');
 require('../style/less/app.less');
 
 var appFunc = require('./utils/appFunc'),
-    appService = require('./services/appService'),
     router = require('./router'),
-    enter = require('./app/app');
+    enter = require('./app');
 
 var app = {
     initialize: function() {
@@ -23,102 +22,65 @@ var app = {
     receivedEvent: function(event) {
         switch (event) {
             case 'deviceready':
-                app.initMainView();
+                app.initFramework7();
                 break;
         }
-    },
-    initMainView:function(){
-        var lang = appService.getLocal();
-
-        switch (lang){
-            case 'en-us':
-                require(['./lang/en-us'], function(lang){
-                    window.i18n = lang;
-                    app.initFramework7();
-                });
-                break;
-            case 'zh-cn':
-                require(['./lang/zh-cn'], function(lang){
-                    window.i18n = lang;
-                    app.initFramework7();
-                });
-                break;
-        }
-
     },
     initFramework7: function(){
 
         //Register custom Template7 helpers
-        Template7.registerHelper('t', function (options){
-            var key = options.hash.i18n || '';
-            var keys = key.split('.');
+        // Template7.registerHelper('t', function (options){
+        //     var key = options.hash.i18n || '';
+        //     var keys = key.split('.');
 
-            var value;
-            for (var idx = 0, size = keys.length; idx < size; idx++)
-            {
-                if (value != null)
-                {
-                    value = value[keys[idx]];
-                } else {
-                    value = i18n[keys[idx]];
-                }
+        //     var value;
+        //     for (var idx = 0, size = keys.length; idx < size; idx++)
+        //     {
+        //         if (value != null)
+        //         {
+        //             value = value[keys[idx]];
+        //         } else {
+        //             value = i18n[keys[idx]];
+        //         }
 
-            }
-            return value;
-        });
+        //     }
+        //     return value;
+        // });
 
         window.$$ = Dom7;
-        window.hiApp = new Framework7({
+        window.weApp = new Framework7({
             pushState: true,
             popupCloseByOutside:false,
             animateNavBackIcon: true,
-            modalTitle: i18n.global.modal_title,
-            modalButtonOk: i18n.global.modal_button_ok,
-            modalButtonCancel: i18n.global.cancel,
+            modalTitle: "系统消息",
+            modalButtonOk: "确定",
+            modalButtonCancel: "取消",
             template7Pages: true,
             template7Data: {
                 'page:publicList': {
-                    back: i18n.global.back,
+                    back: "返回",
                     title: '公开课'
                 },
                 'page:pubdetail': {
-                    back: i18n.global.back,
-                    title: i18n.item.title,
-                    comment: i18n.timeline.comment,
-                    forward: i18n.timeline.forward
-                },
-                'page:message': {
-                    chat: i18n.chat.title,
-                    chatPlaceholder: i18n.chat.chatPlaceholder,
-                    send: i18n.global.send
-                },
-                'page:feedback': {
-                    feedBack: i18n.setting.feed_back,
-                    feedBackPlaceholder: i18n.setting.feed_back_placeholder
-                },
-                'page:about': {
-                    appName: i18n.app.name,
-                    about: i18n.setting.about
-                },
-                'page:language': {
-                    back: i18n.global.back,
-                    done: i18n.global.done,
-                    switchLanguage: i18n.global.switch_language
+                    back: "返回",
+                    title: "正文",
+                    comment: "评论",
+                    forward: "转发"
                 }
             }
         });
 
-        window.homeF7View = hiApp.addView('#homeView', {
+        window.homeF7View = weApp.addView('#homeView', {
             dynamicNavbar: true,
             domCache: true
         });
 
-        window.talkF7View = hiApp.addView('#talkView', {
+        window.talkF7View = weApp.addView('#talkView', {
             dynamicNavbar: true,
             domCache: true
         });
 
-        window.rankF7View = hiApp.addView('#rankView', {
+        window.rankF7View = weApp.addView('#rankView', {
             dynamicNavbar: true,
             domCache: true
         });

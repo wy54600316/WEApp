@@ -16,31 +16,35 @@ var topicaddModule = {
             message = $parent.find("#messageInp").val();
 
         if(!subject || subject.length <= 0){
-            hiApp.alert("请输入标题");
+            weApp.alert("请输入标题");
             return false;
         }else if(!message || message.length <= 0){
-            hiApp.alert("请输入内容");
+            weApp.alert("请输入内容");
             return false;
         }
         service.addTopic({
-            cid: this.cid,
+            cid: topicaddModule.cid,
             subject: subject,
             message: message
         }, function(res){
             rankF7View.router.refreshPreviousPage();
-            hiApp.addNotification({
+            weApp.addNotification({
                 title: '通知',
                 message: '帖子创建成功',
                 onClose: function(){
+                    clearTimeout(timer);
                     rankF7View.router.back();
                 }
             });
+            var timer = setTimeout(function(){
+                weApp.closeNotification('.notification-item');
+            }, 2000);
         });
     },
     bindEvents: function(){
         var bindings = [{
-            element: '#rankView',
-            selector: '#doneTopicBtn',
+            element: '#doneTopicBtn',
+            // selector: '#doneTopicBtn',
             event: 'click',
             handler: topicaddModule.submitData
         }];

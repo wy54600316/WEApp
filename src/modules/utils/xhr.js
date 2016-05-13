@@ -17,7 +17,7 @@ module.exports = {
         //var port = options.port || window.location.port;
         var query = options.query || {};
         var func = options.func || '';
-        var hostMain = 'http://localhost:6914/api/' + func;
+        var hostMain = 'http://168.168.134.18:6914/api/' + func;
         // var hostMain = 'api/' + func + '.json';
 
         var apiServer = hostMain + (appFunc.isEmpty(query) ? '' : '?');
@@ -45,16 +45,20 @@ module.exports = {
             var network = networkStatus.checkConnection();
             if(network === 'NoNetwork'){
 
-                hiApp.alert(i18n.error.no_network,function(){
-                    hiApp.hideIndicator();
-                    hiApp.hidePreloader();
+                weApp.alert("无网络连接", function(){
+                    weApp.hideIndicator();
+                    weApp.hidePreloader();
                 });
 
                 return false;
             }
         }
 
+        weApp.showIndicator();
         $$.ajax({
+            headers:{
+                Authorization:'Bearer rUkpqKNQ_O59NQBjBPyd1bW7ukqY7z2wKX1VyVfk1ZoKawco2voJ6ekit_Q_JpmV6CzNkq2yq2gsw0DC28oCOWf3pwSokOuMixcQlXxtk1yWPaEUPexQDXmKAtLvwjhgKbSYamakjpJJET5LsLlj8sfV0iZhL8yd1bADDUpWhSD7VZrOOPjWJ2HdcPnPcFKHbkculyUosN3jPmbLOL1UhCX1zMrSTzF-Gox6z2lVTi0hWpn3mI-hCHWdtnqV99XDvRVBwJ7D5HAMFdmX6nqX3BtZUFQ33525sLdmslLU0Dchc8NI7MOMsZ93Zt59NENHDlM-McHpkUIzZktXOJNuPN973P4Rh5fqXn2JBGIDzt1da9QMAliRGsm7ud4x41yaZw-R134M1oIzI7jt6uAcwUuT7gE3cPESusb2Ab4Lli_3DJCqJqUvcImeaoiA3L7keiTAIMJPk6mrPmTN2y5CrTg1rNg'
+            },
             url: that.getRequestURL(options) ,
             method: options.method,
             data: options.data,
@@ -75,11 +79,14 @@ module.exports = {
 
                 }else{
 
-                    hiApp.alert(codeLevel.message,function(){
-                        hiApp.hideIndicator();
-                        hiApp.hidePreloader();
+                    weApp.alert(codeLevel.message,function(){
+                        weApp.hideIndicator();
+                        weApp.hidePreloader();
                     });
                 }
+            },
+            complete: function(){
+                weApp.hideIndicator();
             }
         });
 

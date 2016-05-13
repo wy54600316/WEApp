@@ -2,141 +2,89 @@ require('./publist.less');
 
 var service = require('./service'),
     appFunc = require('../utils/appFunc'),
-    template = require('./publist.tpl.html'),
-    inputModule = require('../input/input');
+    template = require('./publist.tpl.html');
 
 var publistModule = {
+    pageObj: {
+        page: 1,
+        pageSize: 1
+    },
     init: function(query){
         appFunc.hideToolbar();
-        var t = query.t,
-            categoryId = this.categoryId = query.id;
+        var t = query.t; 
+        this.categoryId = query.id;
 
         $$(".publist-title").text(t);
         this.getPubList();
         this.bindEvent();
     },
-    getPubList: function(){
+    getPubList: function(type){
         var that = this;
 
         service.getPubList({
-            'categoryId': that.categoryId || 1
-        }, function(tl){
-            that.renderData(tl);
-
-            hiApp.hideIndicator();
-            var ptrContent = $$('#homeView').find('.pull-to-refresh-content');
-            ptrContent.data('scrollLoading','unloading');
+            'categoryId': that.categoryId,
+            'page': that.pageObj.page,
+            'pageSize': that.pageObj.pageSize
+        }, function(res){
+            that.renderData(res, type);
         });
     },
-    refreshData: function(){
-        var that = this;
-        service.refreshData({
-            'categoryId': that.categoryId || 1
-        }, function(tl){
-            var newestId = $$('#homeView').find('.home-timeline .card'). eq(0).data('id');
-
-            setTimeout(function () {
-
-                $$('#homeView .refresh-click').find('i').removeClass('ios7-reloading');
-
-                if(parseInt(newestId) === 48) {
-                    publistModule.showLoadResult(i18n.index.nothing_loaded);
-                    hiApp.pullToRefreshDone();
-                    return false;
-                }
-
-                var length = tl.length;
-
-                if(length >= 15){
-                    publistModule.renderData(tl);
-                }else if(length > 0){
-                    publistModule.renderData(tl, 'prepend');
-                }else{
-                    publistModule.showLoadResult(i18n.index.nothing_loaded);
-                }
-
-                hiApp.pullToRefreshDone();
-
-            },1500);
-
-        });
+    refreshData: function(e){
+        publistModule.pageObj.page = 1;
+        publistModule.getPubList();
     },
-    infiniteData: function(){
-        var $this = $$(this);
-
-        hiApp.showIndicator();
-        service.infiniteData(function(tl){
-            var status = $this.data('scrollLoading');
-            if (status === 'loading') return;
-
-            $this.data('scrollLoading','loading');
-
-            var items = $this.find('.home-timeline .card');
-            var length = items.length;
-            var lastId = items.eq(length - 1).data('id');
-            if(parseInt(lastId) === 24){
-                hiApp.detachInfiniteScroll($this);
-                hiApp.hideIndicator();
-            }else{
-
-                setTimeout(function(){
-                    $this.data('scrollLoading','unloading');
-                    publistModule.renderData(tl, 'append');
-
-                    hiApp.hideIndicator();
-                },1500);
-            }
-        });
+    infiniteData: function(e){
+        publistModule.pageObj.page += 1;
+        publistModule.getPubList('append');
     },
-    showLoadResult: function(text){
-        setTimeout(function(){
-            $$('#homeView .load-result').html(text).css('opacity','1').transition(1000);
-
-            setTimeout(function(){
-                $$('#homeView .load-result').css('opacity','0').transition(1000);
-            },2100);
-        },400);
-    },
-    renderData: function(tl, type){
-        var renderData = {
-            list: tl,
-            finalText: function(){
-                return appFunc.matchUrl(this.text);
-            },
+    renderData: function(res, type){
+        var data = {
+            list: res,
             beginTime: function(){
                 return appFunc.dateFormat(this.beginTime, 'yyyy-MM-dd hh:mm');
             }
         };
-        var output = appFunc.renderTpl(template, renderData);
-        if(type === 'prepend'){
-            $$('#homeView').find('.page-classlist').prepend(output);
-        }else if(type === 'append') {
-            $$('#homeView').find('.page-classlist').append(output);
+        var output = '',
+            $infinite = '.infinite-scroll';
+        if(type === 'append') {
+            if(!res || res.length <= 0){
+                weApp.detachInfiniteScroll($infinite);
+            }else{
+                output = appFunc.renderTpl(template, data);
+                $$('#homeView').find('.page-classlist').append(output);
+
+                if(res.length < publistModule.pageObj.pageSize){
+                    weApp.detachInfiniteScroll($infinite);
+                }
+            }
         }else {
+            output = appFunc.renderTpl(template, data);
             $$('#homeView').find('.page-classlist').html(output);
+
+            setTimeout(function(){
+                weApp.pullToRefreshDone();
+                weApp.attachInfiniteScroll($infinite);
+            }, 1000);
         }
     },
     openPage: function(e){
-        if(e.target.nodeName === 'A' || e.target.nodeName === 'IMG'){
-            return false;
-        }
         var itemId = $$(this).data('id'),
             key = $$(this).data('key');
         homeF7View.router.loadPage('page/pubdetail.html?id=' + itemId + '&key=' + key);
     },
     bindEvent: function(){
         var bindings = [{
-            element: '#homeView',
+            element: '.publist-wrap',
             selector: '.pull-to-refresh-content',
             event: 'refresh',
             handler: this.refreshData
         },{
-            element: '#homeView',
+            element: '.publist-wrap',
             selector: '.pull-to-refresh-content',
             event: 'infinite',
             handler: this.infiniteData
         },{
-            element: '#homeView',
+            element: '.publist-wrap',
             selector: '.pub-item',
             event: 'click',
             handler: this.openPage

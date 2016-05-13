@@ -1,0 +1,107 @@
+@import "../../style/less/mixins";
+
+/* 帖子评论区 */
+.comment-area{
+    margin: 0;
+    padding: 15px 15px 0;
+    background-color: #EBEBEB;
+    overflow: hidden;
+    .content-block-inner:before, .content-block-inner:after{
+        height: 1px;
+    }
+    .content-block-title{
+        margin: 0;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .content-block-inner{
+        .list-block{
+            margin: 10px 0 0;
+            font-size: 14px;
+            ul{
+                &:before,&:after{
+                    height: 0;
+                }
+                .item-inner{
+                    padding: 0;
+                    padding-top: 10px;
+                    .item-title{
+                        font-size: 14px;
+                    }
+                    .item-icon{
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        vertical-align: bottom;
+                    }
+                    .item-after{
+                        max-height: 30px;
+                        line-height: 3.5;
+                        font-size: 12px;
+                    }
+                    &:after{
+                        background-color: #EBEBEB;
+                    }
+                }
+                .none-comment{
+                    text-align: center;
+                    margin-top: 10px;
+                    color: #dbdbdb;
+                    i{
+                       display: block;
+                        font-size: 75px;
+                        margin-left: -15px; 
+                    }
+                }
+            }
+        }
+    }
+}
+
+.comment-popup{
+    a.link{
+        color: @urlColor;
+        font-size: 14px;
+    }
+    .message-content{
+        .message-input{
+            text-align: center;
+            height: 150px;
+            textarea{
+                width: 100%;
+                height: 150px;
+                font-size: 15px;
+                border: none;
+                color: #444;
+                margin: 0;
+                padding: 5px;
+                resize: none;
+                box-sizing: border-box;
+            }
+        }
+        .message-tools{
+            width: 100%;
+            height: 34px;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #dadada;
+            border-top: 1px solid #dadada;
+            ul{
+                list-style: none;
+                font-size: 24px;
+                overflow: hidden;
+                margin: 0;
+                padding: 0;
+                color: #777;
+                li{
+                    width: 20%;
+                    float: left;
+                    text-align: center;
+                    position: relative;
+                    i.fa{
+                        font-size: 21px;
+                    }
+                }
+            }
+        }
+    }
+}

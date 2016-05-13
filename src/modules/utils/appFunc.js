@@ -6,9 +6,22 @@ module.exports = {
         return (typeof(cordova) !== 'undefined' || typeof(phonegap) !== 'undefined');
     },
 
+    isWXWebview: function(){
+        var ua = navigator.userAgent.toLowerCase();  
+        if(ua.match(/MicroMessenger/i)=="micromessenger") {
+            return true;
+        } else {  
+            return false;
+        }  
+    },
+
     renderTpl: function(markup,renderData){
         var compiledTemplate = Template7.compile(markup);
         return compiledTemplate(renderData);
+    },
+
+    registerHelper: function(func, calc){
+        Template7.registerHelper(func, calc);
     },
 
     isEmail: function(str){
@@ -32,11 +45,11 @@ module.exports = {
     },
 
     hideToolbar: function() {
-        hiApp.hideToolbar('.toolbar');
+        weApp.hideToolbar('.toolbar');
     },
 
     showToolbar: function() {
-        hiApp.showToolbar('.toolbar');
+        weApp.showToolbar('.toolbar');
     },
 
     timeFormat: function(ms){
@@ -51,13 +64,13 @@ module.exports = {
         d_minutes = Math.round(d / 60);
         d_second = Math.round(d);
         if (d_days > 0 && d_days < 2) {
-            return d_days + i18n.global.day_ago;
+            return d_days + "天前";
         } else if (d_days <= 0 && d_hours > 0) {
-            return d_hours + i18n.global.hour_ago;
+            return d_hours + "小时前";
         } else if (d_hours <= 0 && d_minutes > 0) {
-            return d_minutes + i18n.global.minute_ago;
+            return d_minutes + "分钟前";
         } else if (d_minutes <= 0 && d_second >= 0) {
-            return i18n.global.just_now;
+            return "刚刚";
         } else {
             var s = new Date();
             s.setTime(ms);
@@ -107,9 +120,11 @@ module.exports = {
         for (var i in bindings) {
             if(bindings[i].selector) {
                 $$(bindings[i].element)
+                    .off(bindings[i].event,bindings[i].selector)
                     .on(bindings[i].event,bindings[i].selector , bindings[i].handler);
             }else{
                 $$(bindings[i].element)
+                    .off(bindings[i].event)
                     .on(bindings[i].event, bindings[i].handler);
             }
         }

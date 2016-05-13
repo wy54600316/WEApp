@@ -5,46 +5,74 @@ var service = require('./service'),
     template = require('./examlist.tpl.html');
 
 var examlistModule = {
+    pageObj: {
+        page: 1,
+        pageSize: 7
+    },
     init: function(query){
         appFunc.hideToolbar();
         this.getExamList();
         this.bindEvent();
     },
     getExamList: function(type){
-        // service.getExamList({
-        // },function(res){
-            var renderData = {
-                list: [{},{},{}],
-                finalText: function(){
-                    return appFunc.matchUrl(this.text);
-                },
-                beginTime: function(){
-                    return appFunc.dateFormat(this.beginTime, 'yyyy-MM-dd hh:mm');
+        service.getExamList({
+            dataObj: {
+                page: this.pageObj.page,
+                pageSize: this.pageObj.pageSize
+            }
+        },function(res){
+            var data = {
+                list: res,
+                endTime: function(){
+                    return appFunc.dateFormat(this.endTime, 'yyyy-MM-dd hh:mm');
                 }
             };
-            var output = appFunc.renderTpl(template, renderData);
-            if(type === 'prepend'){
-                $$('#talkView').find('#examList').prepend(output);
-            }else if(type === 'append') {
-                $$('#talkView').find('#examList').append(output);
+
+            var output = '',
+                $infinite = '.infinite-scroll';
+            if(type === 'append') {
+                if(!res || res.length <= 0){
+                    weApp.detachInfiniteScroll($infinite);
+                }else{
+                    output = appFunc.renderTpl(template, data);
+                    $$('.exam-wrap').find('#examList').append(output);
+
+                    if(res.length < examlistModule.pageObj.pageSize){
+                        weApp.detachInfiniteScroll($infinite);
+                    }
+                }
+
             }else {
-                $$('#talkView').find('#examList').html(output);
+                output = appFunc.renderTpl(template, data);
+                $$('.exam-wrap').find('#examList').html(output);
+                setTimeout(function(){
+                    weApp.pullToRefreshDone();
+                    weApp.attachInfiniteScroll($infinite);
+                }, 1000);
             }
-        // });
+        });
+    },
+    refreshData: function(){
+        examlistModule.pageObj.page = 1;
+        examlistModule.getExamList();
+    },
+    infiniteData: function(){
+        examlistModule.pageObj.page += 1;
+        examlistModule.getExamList('append');
     },
     bindEvent: function(){
         var bindings = [{
-            element: '#talkView',
+            element: '.exam-wrap',
             selector: '.pull-to-refresh-content',
             event: 'refresh',
             handler: this.refreshData
         },{
-            element: '#talkView',
+            element: '.exam-wrap',
             selector: '.pull-to-refresh-content',
             event: 'infinite',
             handler: this.infiniteData
         },{
-            element: '#talkView',
+            element: '.exam-wrap',
             selector: '.pub-item',
             event: 'click',
             handler: this.openPage
